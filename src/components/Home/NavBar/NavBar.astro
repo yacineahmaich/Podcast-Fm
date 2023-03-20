@@ -1,0 +1,67 @@
+---
+import CompanyDropdown from "./CompanyDropdown.astro";
+import FeaturesDropdown from "./FeaturesDropdown.astro";
+---
+
+<nav
+  class="sticky top-0 left-0 flex items-center justify-between px-12 py-4 bg-dark/60 backdrop-blur-md z-50"
+>
+  <div>
+    <a href="/" class="bg-white">
+      <img class="w-40 h-auto" src="/assets/logo.svg" alt="Podcast--x" />
+    </a>
+  </div>
+
+  <ul class="flex gap-10 text-sm font-medium">
+    <li class="relative" id="navlink">
+      <button
+        class="flex items-center gap-1 py-3 transition-colors hover:text-light"
+      >
+        <span>Features</span>
+        <svg class="w-5 h-5 fill-gray">
+          <use href="/assets/icons.svg#icon-down"></use>
+        </svg>
+      </button>
+
+      <FeaturesDropdown />
+    </li>
+    <li class="flex items-center gap-1 transition-colors hover:text-light">
+      <a href="#">Pricing</a>
+    </li>
+    <li class="relative" id="navlink">
+      <button
+        class="flex items-center gap-1 py-3 transition-colors hover:text-light"
+      >
+        <span>Company</span>
+        <svg class="w-5 h-5 fill-gray">
+          <use href="/assets/icons.svg#icon-down"></use>
+        </svg>
+      </button>
+      <CompanyDropdown />
+    </li>
+  </ul>
+
+  <div class="space-x-4 font-medium">
+    <a href="#" class="text-gray hover:text-white">Sign in</a>
+    <a
+      href="#"
+      class="px-4 py-2 border rounded-md broder-white hover:bg-white hover:text-dark"
+      >Start free trial</a
+    >
+  </div>
+</nav>
+
+<script>
+  const navigationLinks = document.querySelectorAll("#navlink");
+
+  navigationLinks.forEach((navlink: Element) => {
+    const dropdown = navlink.querySelector("#dropdown")!;
+    navlink.addEventListener("click", (e) => {
+      dropdown.classList.toggle("hidden");
+    });
+    document.addEventListener("click", (e) => {
+      if (navlink.contains(e.target as Node)) return;
+      dropdown.classList.add("hidden");
+    });
+  });
+</script>
