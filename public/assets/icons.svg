@@ -12,8 +12,8 @@
 <symbol id="icon-checkmark" viewBox="0 0 32 32">
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M6 17l8 8 12-18"></path>
 </symbol>
-<symbol id="icon-close" viewBox="0 0 32 32">
-<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M8 24l16-16M8 8l16 16"></path>
+<symbol id="icon-close" viewBox="0 0 20 20">
+<path d="M10 8.586l-7.071-7.071-1.414 1.414 7.071 7.071-7.071 7.071 1.414 1.414 7.071-7.071 7.071 7.071 1.414-1.414-7.071-7.071 7.071-7.071-1.414-1.414-7.071 7.071z"></path>
 </symbol>
 <symbol id="icon-distribution" viewBox="0 0 32 32">
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M5.333 8c0-1.473 1.194-2.667 2.667-2.667v0h2.667c1.473 0 2.667 1.194 2.667 2.667v0 2.667c0 1.473-1.194 2.667-2.667 2.667v0h-2.667c-1.473 0-2.667-1.194-2.667-2.667v0-2.667zM18.667 8c0-1.473 1.194-2.667 2.667-2.667v0h2.667c1.473 0 2.667 1.194 2.667 2.667v0 2.667c0 1.473-1.194 2.667-2.667 2.667v0h-2.667c-1.473 0-2.667-1.194-2.667-2.667v0-2.667zM5.333 21.333c0-1.473 1.194-2.667 2.667-2.667v0h2.667c1.473 0 2.667 1.194 2.667 2.667v0 2.667c0 1.473-1.194 2.667-2.667 2.667v0h-2.667c-1.473 0-2.667-1.194-2.667-2.667v0-2.667zM18.667 21.333c0-1.473 1.194-2.667 2.667-2.667v0h2.667c1.473 0 2.667 1.194 2.667 2.667v0 2.667c0 1.473-1.194 2.667-2.667 2.667v0h-2.667c-1.473 0-2.667-1.194-2.667-2.667v0-2.667z"></path>

@@ -11,6 +11,7 @@ module.exports = {
         gold: "#fbc75d",
         "gold-strong": "#e29a06",
         "gold-900": "#754f03",
+        "gold-600": "#fab426",
         "gold-500": "#d59208",
         "gold-300": "#cda552",
         "gold-100": "#cca451",
