@@ -48,6 +48,9 @@
 <symbol id="icon-podcast-hosting" viewBox="0 0 32 32">
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M4 20c0 2.946 2.388 5.333 5.333 5.333v0h12c3.682 0 6.667-2.985 6.667-6.667s-2.985-6.667-6.667-6.667c-0.047 0-0.094 0-0.14 0.001l0.007-0c-0.617-3.098-3.313-5.4-6.547-5.4-3.683 0-6.669 2.986-6.669 6.669 0 0.541 0.064 1.067 0.186 1.571l-0.009-0.046c-2.399 0.555-4.16 2.674-4.16 5.204 0 0 0 0 0 0v-0z"></path>
 </symbol>
+<symbol id="icon-arrow-right" viewBox="0 0 32 32">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M23 11l5 5M28 16l-5 5M28 16h-24"></path>
+</symbol>
 <symbol id="icon-private-podcasting" viewBox="0 0 32 32">
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M12 16l2.667 2.667 5.333-5.333M27.491 7.979c-0.253 0.014-0.548 0.022-0.845 0.022-4.099 0-7.836-1.547-10.66-4.089l0.014 0.013c-2.81 2.529-6.547 4.076-10.645 4.076-0.297 0-0.593-0.008-0.886-0.024l0.041 0.002c-0.324 1.203-0.509 2.584-0.509 4.008 0 0.005 0 0.009 0 0.014v-0.001c0 7.455 5.099 13.72 12 15.496 6.901-1.776 12-8.040 12-15.496 0-1.389-0.177-2.736-0.509-4.021z"></path>
 </symbol>

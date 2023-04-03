@@ -4,62 +4,64 @@ import FeaturesDropdown from "./FeaturesDropdown.astro";
 import NavigationModal from "./NavigationModal.astro";
 ---
 
-<nav
-  class="sticky top-0 left-0 flex items-center justify-between container mx-auto px-4 sm:px-6 py-4 bg-dark/60 backdrop-blur-md z-50"
->
-  <div>
-    <a href="/" class="bg-white">
-      <img class="w-40 h-auto" src="/assets/logo.svg" alt="Podcast--x" />
-    </a>
-  </div>
+<nav class="sticky top-0 left-0 z-50 bg-dark/90 backdrop-blur-sm">
+  <div
+    class="container flex items-center justify-between px-4 py-4 mx-auto sm:px-6"
+  >
+    <div>
+      <a href="/" class="bg-white">
+        <img class="w-40 h-auto" src="/assets/logo.svg" alt="Podcast--x" />
+      </a>
+    </div>
 
-  <!-- mobile show nav menu button -->
-  <div class="md:hidden">
-    <button action-show-nav>
-      <svg class="w-6 h-6 stroke-white hover:stroke-gray transition-all">
-        <use href="/assets/icons.svg#icon-humbergur"></use>
-      </svg>
-    </button>
-  </div>
-
-  <NavigationModal />
-
-  <ul class="hidden md:flex gap-6 lg:gap-10 text-sm font-medium">
-    <li class="relative" id="navlink">
-      <button
-        class="flex items-center gap-1 py-3 transition-colors hover:text-light"
-      >
-        <span>Features</span>
-        <svg class="w-5 h-5 fill-gray">
-          <use href="/assets/icons.svg#icon-down"></use>
+    <!-- mobile show nav menu button -->
+    <div class="md:hidden">
+      <button action-show-nav>
+        <svg class="w-6 h-6 transition-all stroke-white hover:stroke-gray">
+          <use href="/assets/icons.svg#icon-humbergur"></use>
         </svg>
       </button>
+    </div>
 
-      <FeaturesDropdown />
-    </li>
-    <li class="flex items-center gap-1 transition-colors hover:text-light">
-      <a href="#">Pricing</a>
-    </li>
-    <li class="relative" id="navlink">
-      <button
-        class="flex items-center gap-1 py-3 transition-colors hover:text-light"
+    <NavigationModal />
+
+    <ul class="hidden gap-6 text-sm font-medium md:flex lg:gap-10">
+      <li class="relative" id="navlink">
+        <button
+          class="flex items-center gap-1 py-3 transition-colors hover:text-light"
+        >
+          <span>Features</span>
+          <svg class="w-5 h-5 fill-gray">
+            <use href="/assets/icons.svg#icon-down"></use>
+          </svg>
+        </button>
+
+        <FeaturesDropdown />
+      </li>
+      <li class="flex items-center gap-1 transition-colors hover:text-light">
+        <a href="#">Pricing</a>
+      </li>
+      <li class="relative" id="navlink">
+        <button
+          class="flex items-center gap-1 py-3 transition-colors hover:text-light"
+        >
+          <span>Company</span>
+          <svg class="w-5 h-5 fill-gray">
+            <use href="/assets/icons.svg#icon-down"></use>
+          </svg>
+        </button>
+        <CompanyDropdown />
+      </li>
+    </ul>
+
+    <div class="hidden space-x-4 font-medium text-md md:block">
+      <a href="#" class="text-gray hover:text-white">Sign in</a>
+      <a
+        href="#"
+        class="px-3 py-2 border rounded-md broder-white hover:bg-white hover:text-dark"
+        >Start free trial</a
       >
-        <span>Company</span>
-        <svg class="w-5 h-5 fill-gray">
-          <use href="/assets/icons.svg#icon-down"></use>
-        </svg>
-      </button>
-      <CompanyDropdown />
-    </li>
-  </ul>
-
-  <div class="space-x-4 font-medium text-md hidden md:block">
-    <a href="#" class="text-gray hover:text-white">Sign in</a>
-    <a
-      href="#"
-      class="px-3 py-2 border rounded-md broder-white hover:bg-white hover:text-dark"
-      >Start free trial</a
-    >
+    </div>
   </div>
 </nav>
 
