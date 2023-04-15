@@ -5,6 +5,7 @@ import Header from "../components/Home/Header.astro";
 import PodcastReview from "../components/Home/PodcastReview.astro";
 import PublishEverywhere from "../components/Home/PublishEverywhere.astro";
 import HostPodcast from "../components/Home/HostPodcast.astro";
+import BuildWebsite from "../components/Home/BuildWebsite.astro";
 ---
 
 <Layout title="Podcast-Fm | You podcast's publishing platform">
@@ -12,9 +13,10 @@ import HostPodcast from "../components/Home/HostPodcast.astro";
   <main class="-mt-10">
     <Header />
     <PodcastReview />
-    <div class="w-full space-y-24 mt-40">
+    <div class="w-full mt-40 space-y-24">
       <PublishEverywhere />
       <HostPodcast />
+      <BuildWebsite />
     </div>
   </main>
 </Layout>
