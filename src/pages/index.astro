@@ -6,6 +6,7 @@ import PodcastReview from "../components/Home/PodcastReview.astro";
 import PublishEverywhere from "../components/Home/PublishEverywhere.astro";
 import HostPodcast from "../components/Home/HostPodcast.astro";
 import BuildWebsite from "../components/Home/BuildWebsite.astro";
+import AudioPlayer from "../components/Home/AudioPlayer.astro";
 ---
 
 <Layout title="Podcast-Fm | You podcast's publishing platform">
@@ -13,10 +14,13 @@ import BuildWebsite from "../components/Home/BuildWebsite.astro";
   <main class="-mt-10">
     <Header />
     <PodcastReview />
-    <div class="w-full mt-40 space-y-24">
+    <div
+      class="relative w-full mt-40 space-y-24 after:absolute after:w-full after:h-52 after:bottom-0 left-0 after:bg-gradient-to-t after:from-dark-700 after:z-[-10] after:to-white/0"
+    >
       <PublishEverywhere />
       <HostPodcast />
       <BuildWebsite />
+      <AudioPlayer />
     </div>
   </main>
 </Layout>
