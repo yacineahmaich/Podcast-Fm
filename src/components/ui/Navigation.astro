@@ -1,7 +1,7 @@
 ---
-import CompanyDropdown from "./CompanyDropdown.astro";
-import FeaturesDropdown from "./FeaturesDropdown.astro";
-import NavigationModal from "./NavigationModal.astro";
+import CompanyDropdown from "./NavBar/CompanyDropdown.astro";
+import FeaturesDropdown from "./NavBar/FeaturesDropdown.astro";
+import MobileNavigation from "./MobileNavigation.astro";
 ---
 
 <nav class="sticky top-0 left-0 z-50 bg-dark/90 backdrop-blur-sm">
@@ -23,7 +23,7 @@ import NavigationModal from "./NavigationModal.astro";
       </button>
     </div>
 
-    <NavigationModal />
+    <MobileNavigation />
 
     <ul class="hidden gap-6 text-sm font-medium md:flex lg:gap-10">
       <li class="relative" id="navlink">
