@@ -1,11 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Home/Header.astro";
-import PodcastReview from "../components/Home/PodcastReview.astro";
-import PublishEverywhere from "../components/Home/PublishEverywhere.astro";
-import HostPodcast from "../components/Home/HostPodcast.astro";
-import BuildWebsite from "../components/Home/BuildWebsite.astro";
-import AudioPlayer from "../components/Home/AudioPlayer.astro";
+import Header from "../components/home/Header.astro";
+import PodcastReview from "../components/home/PodcastReview.astro";
+import PublishEverywhere from "../components/home/PublishEverywhere.astro";
+import HostPodcast from "../components/home/HostPodcast.astro";
+import BuildWebsite from "../components/home/BuildWebsite.astro";
+import AudioPlayer from "../components/home/AudioPlayer.astro";
+import PodcastAnalytics from "../components/home/PodcastAnalytics.astro";
 ---
 
 <Layout title="Podcast-Fm | You podcast's publishing platform">
@@ -20,5 +21,6 @@ import AudioPlayer from "../components/Home/AudioPlayer.astro";
       <BuildWebsite />
       <AudioPlayer />
     </div>
+    <PodcastAnalytics />
   </main>
 </Layout>
