@@ -1,0 +1,112 @@
+---
+import podact1 from "../../../public/assets/podcasts/1.webp";
+import podact2 from "../../../public/assets/podcasts/2.webp";
+import podact3 from "../../../public/assets/podcasts/3.webp";
+import podact4 from "../../../public/assets/podcasts/4.webp";
+import podact5 from "../../../public/assets/podcasts/5.webp";
+import podact6 from "../../../public/assets/podcasts/6.webp";
+import podact7 from "../../../public/assets/podcasts/7.webp";
+import podact8 from "../../../public/assets/podcasts/8.webp";
+import podact9 from "../../../public/assets/podcasts/9.webp";
+import podact10 from "../../../public/assets/podcasts/10.webp";
+import podact11 from "../../../public/assets/podcasts/11.webp";
+import podact12 from "../../../public/assets/podcasts/12.webp";
+
+const transistorPodacts = [
+  podact1,
+  podact2,
+  podact3,
+  podact4,
+  podact5,
+  podact6,
+  podact7,
+  podact8,
+  podact9,
+  podact10,
+  podact11,
+  podact12,
+];
+---
+
+<section id="transistor-podcasts" class="mb-40">
+  <div class="relative grid w-full grid-cols-4 gap-2 md:grid-cols-6">
+    {
+      transistorPodacts.map((podcast) => (
+        <div>
+          <img src={podcast} alt="podcast" />
+        </div>
+      ))
+    }
+
+    <div
+      class="absolute inset-0 flex flex-col items-center justify-center w-full h-full gap-6 bg-dark/80"
+    >
+      <h3 class="text-xl font-medium text-white sm:text-2xl md:text-4xl">
+        Join <span id="podcasts-count">22,883</span> other podcasts on <strong
+          >Transistor</strong
+        >
+      </h3>
+      <a
+        href="#"
+        class="px-6 py-3 font-medium capitalize transition-colors border-2 border-white rounded-full hover:text-black hover:bg-white"
+      >
+        <span>get started</span>
+        <svg
+          class="inline w-5 h-5 ml-1"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path>
+        </svg></a
+      >
+    </div>
+  </div>
+</section>
+
+<script>
+  const tranistorPodcastsEl = document.querySelector("#transistor-podcasts")!;
+  const podcastCountEl = document.querySelector("#podcasts-count")!;
+
+  const formatNumber = (number: number) =>
+    Intl.NumberFormat(navigator.language).format(number);
+
+  const observerOptions = {
+    root: null,
+    threshold: 1,
+  };
+
+  let interval: number;
+  const observer = new IntersectionObserver((entries, observer) => {
+    const entry = entries[0];
+
+    // check if in view
+    if (!entry.isIntersecting) return;
+
+    // detach the observer
+    observer.unobserve(tranistorPodcastsEl);
+
+    // atach interval
+    const count = 22_883;
+    const steps = 123;
+    let currentCount = 0;
+    interval = setInterval(() => {
+      if (currentCount > count) {
+        podcastCountEl.textContent = formatNumber(count);
+        clearInterval(interval);
+      } else {
+        podcastCountEl.textContent = formatNumber(currentCount);
+      }
+
+      currentCount = currentCount + steps;
+    }, 1);
+  }, observerOptions);
+
+  observer.observe(tranistorPodcastsEl);
+</script>
