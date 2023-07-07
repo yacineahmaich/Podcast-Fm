@@ -2,6 +2,10 @@
 
 A landing page for podcast hosting platform.
 
+##
+
+- Custom Audio Player
+
 ## Technologies Used
 
 - Astro ( SSG framework )
