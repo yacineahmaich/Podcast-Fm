@@ -16,21 +16,25 @@ import TryPodcasting from "../components/Home/TryPodcasting.astro";
 
 <Layout title="Podcast-Fm | You podcast's publishing platform">
   <main class="-mt-10">
-    <Header />
-    <PodcastReview />
     <div
-      class="relative w-full mt-40 space-y-24 after:absolute after:w-full after:h-52 after:bottom-0 left-0 after:bg-gradient-to-t after:from-dark-700 after:z-[-10] after:to-white/0"
+      class="relative w-full after:absolute after:w-full after:h-52 after:bottom-0 left-0 after:bg-gradient-to-t after:from-dark-700 after:z-[-10] after:to-white/0 mb-40"
     >
-      <PublishEverywhere />
-      <HostPodcast />
-      <BuildWebsite />
-      <AudioPlayer />
+      <Header />
+      <PodcastReview />
+      <div
+        class="relative w-full mt-40 space-y-24 after:absolute after:w-full after:h-52 after:bottom-0 left-0 after:bg-gradient-to-t after:from-dark-700 after:z-[-10] after:to-white/0"
+      >
+        <PublishEverywhere />
+        <HostPodcast />
+        <BuildWebsite />
+        <AudioPlayer />
+      </div>
+      <PodcastAnalytics />
+      <TransistorPodcasts />
+      <Pricing />
+      <Contactus />
+      <LearnPodcasting />
+      <TryPodcasting />
     </div>
-    <PodcastAnalytics />
-    <TransistorPodcasts />
-    <Pricing />
-    <Contactus />
-    <LearnPodcasting />
-    <TryPodcasting />
   </main>
 </Layout>
