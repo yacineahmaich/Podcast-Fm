@@ -1,6 +1,6 @@
 <div
-  class="fixed hidden right-2 left-2 top-2 bg-dark-700 rounded-lg shadow-lg divide-y-2 divide-gray/20 pb-3 animate-in slide-in-from-bottom-2"
-  mobile-navbar
+  class="fixed right-2 left-2 top-2 bg-dark-700 rounded-lg shadow-lg divide-y-2 divide-gray/20 pb-3 animate-in slide-in-from-bottom-2"
+  x-show="open"
 >
   <div class="space-y-6 p-5">
     <div class="flex justify-between items-center">
@@ -8,7 +8,7 @@
         <img src="/assets/logo.svg" alt="Podcast Fm" />
       </div>
 
-      <button class="p-3 hover:bg-dark rounded-md" action-close-mobile-navbar>
+      <button class="p-3 hover:bg-dark rounded-md" @click="open = false">
         <svg class="w-4 h-4 fill-gray">
           <use href="/assets/icons.svg#icon-close"></use>
         </svg>

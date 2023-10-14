@@ -1,7 +1,7 @@
-<!-- features dropdown -->
 <div
-  class="absolute hidden overflow-hidden lg:-translate-x-1/2 rounded-lg left-0 lg:left-1/2 w-[380px]"
-  id="dropdown"
+  class="absolute overflow-hidden lg:-translate-x-1/2 rounded-lg left-0 lg:left-1/2 w-[380px]"
+  x-show="open"
+  @click.away="open = false"
 >
   <div class="px-6 py-5 bg-dark-700">
     <ul class="flex flex-col w-full gap-4">

@@ -4,7 +4,10 @@ import FeaturesDropdown from "./NavBar/FeaturesDropdown.astro";
 import MobileNavigation from "./MobileNavigation.astro";
 ---
 
-<nav class="sticky top-0 left-0 z-50 bg-dark/90 backdrop-blur-sm" data-aos="fade-down">
+<nav
+  class="sticky top-0 left-0 z-50 bg-dark/90 backdrop-blur-sm"
+  data-aos="fade-down"
+>
   <div
     class="container flex items-center justify-between px-4 py-4 mx-auto sm:px-6"
   >
@@ -15,20 +18,22 @@ import MobileNavigation from "./MobileNavigation.astro";
     </div>
 
     <!-- mobile show nav menu button -->
-    <div class="md:hidden">
-      <button action-show-nav>
+    <div class="md:hidden" x-data="{open:false}">
+      <button @click="open = !open">
         <svg class="w-6 h-6 transition-all stroke-white hover:stroke-gray">
           <use href="/assets/icons.svg#icon-humbergur"></use>
         </svg>
       </button>
+
+      <MobileNavigation />
     </div>
 
-    <MobileNavigation />
-
     <ul class="hidden gap-6 text-sm font-medium md:flex lg:gap-10">
-      <li class="relative" id="navlink">
+      <li class="relative" id="navlink" x-data="{open: false}">
         <button
           class="flex items-center gap-1 py-3 transition-colors hover:text-light"
+          @click="open = !open"
+          @keydown.escape="isOpen = false"
         >
           <span>Features</span>
           <svg class="w-5 h-5 fill-gray">
@@ -41,9 +46,11 @@ import MobileNavigation from "./MobileNavigation.astro";
       <li class="flex items-center gap-1 transition-colors hover:text-light">
         <a href="#">Pricing</a>
       </li>
-      <li class="relative" id="navlink">
+      <li class="relative" id="navlink" x-data="{open: false}">
         <button
           class="flex items-center gap-1 py-3 transition-colors hover:text-light"
+          @click="open = !open"
+          @keydown.escape="open = false"
         >
           <span>Company</span>
           <svg class="w-5 h-5 fill-gray">
@@ -64,33 +71,3 @@ import MobileNavigation from "./MobileNavigation.astro";
     </div>
   </div>
 </nav>
-
-<script>
-  const navigationLinks = document.querySelectorAll("#navlink");
-
-  navigationLinks.forEach((navlink: Element) => {
-    const dropdown = navlink.querySelector("#dropdown")!;
-    navlink.addEventListener("click", (e) => {
-      dropdown.classList.toggle("hidden");
-    });
-    document.addEventListener("click", (e) => {
-      if (navlink.contains(e.target as Node)) return;
-      dropdown.classList.add("hidden");
-    });
-  });
-
-  // mobile navigation
-  const showNavBtn: HTMLButtonElement =
-    document.querySelector("[action-show-nav]")!;
-  const hideNavBtn: HTMLButtonElement = document.querySelector(
-    "[action-close-mobile-navbar]"
-  )!;
-  const mobileNav: HTMLElement = document.querySelector("[mobile-navbar]")!;
-
-  showNavBtn.addEventListener("click", () => {
-    mobileNav.classList.remove("hidden");
-  });
-  hideNavBtn.addEventListener("click", () => {
-    mobileNav.classList.add("hidden");
-  });
-</script>

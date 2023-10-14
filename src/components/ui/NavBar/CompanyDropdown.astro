@@ -1,7 +1,8 @@
 <!-- company dropdown -->
 <div
-  class="absolute hidden overflow-hidden -translate-x-1/2 left-1/2 rounded-lg w-[430px]"
-  id="dropdown"
+  class="absolute overflow-hidden -translate-x-1/2 left-1/2 rounded-lg w-[430px]"
+  x-show="open"
+  @click.away="open = false"
 >
   <div class="px-6 py-5 bg-dark-700">
     <ul class="flex flex-col w-full gap-4">

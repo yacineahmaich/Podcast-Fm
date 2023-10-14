@@ -1,55 +1,4 @@
----
-const plans = [
-  {
-    label: "Starter",
-    key: "starter",
-    features: [
-      "<strong>Unlimited</strong> podcasts",
-      "<strong>Unlimited</strong> Team members/collaborators",
-      "<strong>50</strong> Private podcast subscribers",
-      "<strong>20K</strong> Monthly downloads",
-      "Live customer support",
-      "Advanced analytics",
-      "Built-in podcast website",
-    ],
-  },
-  {
-    label: "Professional",
-    key: "professional",
-    features: [
-      "<strong>Unlimited</strong> podcasts",
-      "<strong>Unlimited</strong> Team members/collaborators",
-      "<strong>500</strong> Private podcast subscribers",
-      "<strong>100K</strong> Monthly downloads",
-      "Live customer support",
-      "Advanced analytics",
-      "Built-in podcast website",
-      "Dynamic ads (pre-roll, mid-roll, post-roll)",
-      "Dynamic show notes",
-      "Auto-post to YouTube",
-    ],
-  },
-  {
-    label: "Business",
-    key: "business",
-    features: [
-      "<strong>Unlimited</strong> podcasts",
-      "<strong>Unlimited</strong> Team members/collaborators",
-      "<strong>3K</strong> Private podcast subscribers",
-      "<strong>250K</strong> Monthly downloads",
-      "Live customer support",
-      "Advanced analytics",
-      "Built-in podcast website",
-      "Dynamic ads (pre-roll, mid-roll, post-roll)",
-      "Dynamic show notes",
-      "Auto-post to YouTube",
-      "Remove branding from player",
-    ],
-  },
-];
----
-
-<section class="mb-10">
+<section class="mb-10" x-data="pricing">
   <div class="container w-full px-3 mx-auto md:px-6">
     <div class="text-center">
       <h3 class="text-4xl font-medium">Pricing</h3>
@@ -58,14 +7,17 @@ const plans = [
 
     <div>
       <div
-        class="mx-auto mt-5 -space-x-1 overflow-hidden text-sm text-white bg-transparent border rounded-lg w-fit border-gold-strong"
+        class="mx-auto mt-5 -space-x-1 overflow-hidden text-sm text-white bg-transparent border rounded-lg w-fit border-gold-strong select-none"
       >
-        <button class="px-4 py-1 hover:bg-gold-strong" id="monthly-sub"
-          >Monthly</button
+        <button
+          class="px-4 py-1 hover:bg-gold-strong"
+          :class="isMonthly ? 'bg-gold-strong': ''"
+          @click="billingPeriod = 'monthly'">Monthly</button
         >
         <button
-          class="px-4 py-1 hover:bg-gold-strong bg-gold-strong"
-          id="yearly-sub">Yearly</button
+          class="px-4 py-1 hover:bg-gold-strong "
+          :class="isYearly ? 'bg-gold-strong': ''"
+          @click="billingPeriod = 'yearly'">Yearly</button
         >
       </div>
       <p class="mt-3 text-sm font-thin text-center text-white/80">
@@ -74,131 +26,165 @@ const plans = [
     </div>
 
     <main class="grid gap-8 mt-10 md:grid-cols-3">
-      {
-        plans.map((plan, i) => (
+      <template x-for="(plan, i) in plans">
+        <div
+          class="flex flex-col mx-auto overflow-hidden text-black sm:max-w-sm md:mx-0 rounded-xl"
+          data-aos="fade-up"
+          :data-aos-delay="i * 100 + 100"
+        >
           <div
-            class="flex flex-col mx-auto overflow-hidden text-black sm:max-w-sm md:mx-0 rounded-xl"
-            data-aos="fade-up"
-            data-aos-delay={i * 100 + 100}
+            class="z-10 flex-1 p-8 bg-gradient-to-br from-[#F2F2F2] to-white rounded-b-xl"
           >
-            <div class="z-10 flex-1 p-8 bg-gradient-to-br from-[#F2F2F2] to-white rounded-b-xl">
-              <header class="mb-6 space-y-3 text-center group">
-                <h3 class="text-xl font-semibold text-dark">{plan.label}</h3>
-                <p>
-                  <span
-                    class="text-3xl font-bold font text-black/80"
-                    data-plan={plan.key}
-                    plan-price
-                  >
-                    <span>190</span>
-                    <sup class="font-normal text-sm">/yr</sup>
-                  </span>
-                </p>
-
-                <div>
-                  <a
-                    href=""
-                    class="block px-3 py-2 mx-auto text-sm transition-colors border rounded-lg w-fit border-dark group-hover:bg-dark group-hover:text-white"
-                  >
-                    Start free trial
-                  </a>
-                </div>
-              </header>
+            <header class="mb-6 space-y-3 text-center group">
+              <h3 class="text-xl font-semibold text-dark" x-text="plan.label">
+              </h3>
+              <p>
+                <span
+                  class="text-3xl font-bold font text-black/80"
+                  x-show="isMonthly"
+                >
+                  <span x-text="plan.price.monthly"></span>
+                  <sup class="font-normal text-sm">/mo</sup>
+                </span>
+                <span
+                  class="text-3xl font-bold font text-black/80"
+                  x-show="isYearly"
+                >
+                  <span x-text="plan.price.yearly"></span>
+                  <sup class="font-normal text-sm">/yr</sup>
+                </span>
+              </p>
 
               <div>
-                <ul class="space-y-3 text-sm text-black/80">
-                  {plan.features.map((feature) => (
-                    <li class="flex justify-center gap-1 text-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="w-5 h-5 text-green-500"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M4.5 12.75l6 6 9-13.5"
-                        />
-                      </svg>
-                      <span set:html={feature} class="underline" />
-                    </li>
-                  ))}
-                </ul>
+                <a
+                  href=""
+                  class="block px-3 py-2 mx-auto text-sm transition-colors border rounded-lg w-fit border-dark group-hover:bg-dark group-hover:text-white"
+                >
+                  Start free trial
+                </a>
               </div>
-            </div>
+            </header>
 
-            <a
-              href=""
-              class="flex items-center justify-center w-full gap-1 pb-5 -mt-2 font-medium transition-colors pt-7 bg-gold-strong hover:bg-gold-600 text-dark"
-            >
-              <span>Buy {plan.label}</span>
-              <svg
-                class="relative right-0 w-5 h-5 ml-1 transition-all group-hover:-right-1"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-6 h-6"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                />
-              </svg>
-            </a>
+            <div>
+              <ul class="space-y-3 text-sm text-black/80">
+                <template x-for="feature in plan.features">
+                  <li class="flex justify-center gap-1 text-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-5 h-5 text-green-500"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M4.5 12.75l6 6 9-13.5"></path>
+                    </svg>
+                    <span x-html="feature" class="underline"></span>
+                  </li>
+                </template>
+              </ul>
+            </div>
           </div>
-        ))
-      }
+
+          <a
+            href=""
+            class="flex items-center justify-center w-full gap-1 pb-5 -mt-2 font-medium transition-colors pt-7 bg-gold-strong hover:bg-gold-600 text-dark"
+          >
+            <span x-text="'Buy ' + plan.label"></span>
+            <svg
+              class="relative right-0 w-5 h-5 ml-1 transition-all group-hover:-right-1"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path>
+            </svg>
+          </a>
+        </div>
+      </template>
     </main>
   </div>
 </section>
 
 <script>
-  const monthlySubscription = {
-    starter: 19,
-    professional: 49,
-    business: 99,
-  };
-  const yearlySubscription = {
-    starter: 190,
-    professional: 490,
-    business: 990,
-  };
-
-  const monthlySubBtn = document.getElementById("monthly-sub");
-  const yearlySubBtn = document.getElementById("yearly-sub");
-  const plansPricing = document.querySelectorAll("[plan-price]");
-
-  monthlySubBtn?.addEventListener("click", function () {
-    this.classList.add("bg-gold-strong");
-    yearlySubBtn?.classList.remove("bg-gold-strong");
-
-    plansPricing.forEach((item) => {
-      // @ts-ignore
-      const planKey = item.dataset.plan;
-
-      // @ts-ignore
-      item.innerHTML = `<span>$${monthlySubscription[planKey]}</span>
-                      <sup class="font-normal text-sm">/mo</sup>`;
-    });
-  });
-
-  yearlySubBtn?.addEventListener("click", function () {
-    this.classList.add("bg-gold-strong");
-    monthlySubBtn?.classList.remove("bg-gold-strong");
-
-    plansPricing.forEach((item) => {
-      // @ts-ignore
-      const planKey = item.dataset.plan;
-
-      // @ts-ignore
-      item.innerHTML = `<span>$${yearlySubscription[planKey]}</span>
-                      <sup class="font-normal text-sm">/yr</sup>`;
-    });
+  document.addEventListener("alpine:init", () => {
+    Alpine.data("pricing", () => ({
+      billingPeriod: "monthly",
+      get isMonthly() {
+        return this.billingPeriod === "monthly";
+      },
+      get isYearly() {
+        return this.billingPeriod === "yearly";
+      },
+      plans: [
+        {
+          label: "Starter",
+          key: "starter",
+          price: {
+            monthly: 19,
+            yearly: 190,
+          },
+          features: [
+            "<strong>Unlimited</strong> podcasts",
+            "<strong>Unlimited</strong> Team members/collaborators",
+            "<strong>50</strong> Private podcast subscribers",
+            "<strong>20K</strong> Monthly downloads",
+            "Live customer support",
+            "Advanced analytics",
+            "Built-in podcast website",
+          ],
+        },
+        {
+          label: "Professional",
+          key: "professional",
+          price: {
+            monthly: 49,
+            yearly: 490,
+          },
+          features: [
+            "<strong>Unlimited</strong> podcasts",
+            "<strong>Unlimited</strong> Team members/collaborators",
+            "<strong>500</strong> Private podcast subscribers",
+            "<strong>100K</strong> Monthly downloads",
+            "Live customer support",
+            "Advanced analytics",
+            "Built-in podcast website",
+            "Dynamic ads (pre-roll, mid-roll, post-roll)",
+            "Dynamic show notes",
+            "Auto-post to YouTube",
+          ],
+        },
+        {
+          label: "Business",
+          key: "business",
+          price: {
+            monthly: 99,
+            yearly: 990,
+          },
+          features: [
+            "<strong>Unlimited</strong> podcasts",
+            "<strong>Unlimited</strong> Team members/collaborators",
+            "<strong>3K</strong> Private podcast subscribers",
+            "<strong>250K</strong> Monthly downloads",
+            "Live customer support",
+            "Advanced analytics",
+            "Built-in podcast website",
+            "Dynamic ads (pre-roll, mid-roll, post-roll)",
+            "Dynamic show notes",
+            "Auto-post to YouTube",
+            "Remove branding from player",
+          ],
+        },
+      ],
+    }));
   });
 </script>
