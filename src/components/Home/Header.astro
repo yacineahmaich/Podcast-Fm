@@ -13,41 +13,23 @@
         data-aos="fade-down"
         data-aos-delay="100"
         ><span class="block lg:inline">Record & upload your podcast.</span>
-        <span class="inline-flex">
+        <span class="inline-flex items-center">
           <span> We'll distribute it to</span>
-          <div class="relative">
-            <span class="absolute ml-3 font-medium text-md md:text-2xl">
-              <span
-                class="absolute flex items-center gap-2 transition-opacity whitespace-nowrap opacity-1"
-                podcast-service
-                data-service="spotify"
-              >
-                <svg class="w-7 h-7 md:w-9 md:h-9 fill-white">
-                  <use href="/assets/icons.svg#icon-spotify"></use>
-                </svg>
-                <span>Spotify</span>
-              </span>
-              <span
-                class="absolute flex items-center gap-2 transition-opacity opacity-0 whitespace-nowrap"
-                podcast-service
-                data-service="google_podcast"
-              >
-                <svg class="w-7 h-7 md:w-9 md:h-9 fill-white">
-                  <use href="/assets/icons.svg#icon-google-podcast"></use>
-                </svg>
-                <span>Google Podcasts</span>
-              </span>
-              <span
-                class="absolute flex items-center gap-2 transition-opacity opacity-0 whitespace-nowrap"
-                podcast-service
-                data-service="apple_podcast"
-              >
-                <svg class="w-7 h-7 md:w-9 md:h-9 fill-white">
-                  <use href="/assets/icons.svg#icon-apple-podcast"></use>
-                </svg>
-                <span>Apple Podcasts</span>
-              </span>
-            </span>
+          <div class="relative" x-data="podcastPlatforms">
+            <template x-for="(platform, idx) in platforms">
+              <template x-if="active === idx">
+                <span
+                  class="ml-3 flex items-center gap-2 font-medium text-md md:text-2xl whitespace-nowrap"
+                  data-aos="zoom-right"
+                  data-aos-duration="1000"
+                >
+                  <svg class="w-7 h-7 md:w-9 md:h-9 fill-white">
+                    <use x-bind:href="platform.icon"></use>
+                  </svg>
+                  <span x-text="platform.label"></span>
+                </span>
+              </template>
+            </template>
           </div>
         </span></span
       >
@@ -96,29 +78,34 @@
 </div>
 
 <script>
-  const services = ["spotify", "google_podcast", "apple_podcast"];
-  const servicesEl = document.querySelectorAll("[podcast-service]");
-  let service = "spotify";
-  let currentIndex = 0;
+  import Alpine from "alpinejs";
 
-  setInterval(() => {
-    if (currentIndex === services.length - 1) {
-      currentIndex = 0;
-      service = services[currentIndex];
-    } else {
-      service = services[++currentIndex];
-    }
-
-    servicesEl.forEach((el) => {
-      if (el instanceof HTMLElement) {
-        if (el.dataset.service !== service) {
-          el.classList.remove("opacity-100");
-          el.classList.add("opacity-0");
-        } else {
-          el.classList.remove("opacity-0");
-          el.classList.add("opacity-1");
-        }
-      }
-    });
-  }, 1000);
+  document.addEventListener("alpine:init", () => {
+    Alpine.data("podcastPlatforms", () => ({
+      active: 0,
+      platforms: [
+        {
+          label: "Spotify",
+          icon: "/assets/icons.svg#icon-spotify",
+        },
+        {
+          label: "Google Podcasts",
+          icon: "/assets/icons.svg#icon-google-podcast",
+        },
+        {
+          label: "Apple Podcasts",
+          icon: "/assets/icons.svg#icon-apple-podcast",
+        },
+      ],
+      init() {
+        setInterval(() => {
+          if (this.active < this.platforms.length - 1) {
+            this.active++;
+          } else {
+            this.active = 0;
+          }
+        }, 1000);
+      },
+    }));
+  });
 </script>
