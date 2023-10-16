@@ -25,14 +25,6 @@ const { title } = Astro.props;
     <Navigation />
     <slot />
     <Footer />
-
-    <script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script is:inline>
-      AOS.init({
-        once: true,
-        duration: 500,
-      });
-    </script>
   </body>
 </html>
 <style is:global>
@@ -42,3 +34,12 @@ const { title } = Astro.props;
     overflow-x: hidden;
   }
 </style>
+
+<script>
+  import Aos from "aos";
+
+  Aos.init({
+    once: true,
+    duration: 500,
+  });
+</script>
