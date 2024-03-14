@@ -44,7 +44,7 @@ const transistorPodacts = [
       <h3
         class="text-xl font-medium text-white sm:text-2xl md:text-4xl text-center"
       >
-        Join <span id="podcasts-count"></span> other podcasts on <strong
+        Join <span id="podcasts-count">0</span> other podcasts on <strong
           >Transistor</strong
         >
       </h3>
@@ -81,7 +81,7 @@ const transistorPodacts = [
 
   const observerOptions = {
     root: null,
-    threshold: 1,
+    threshold: 0.5,
   };
 
   let interval: number;
